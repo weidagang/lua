@@ -51,8 +51,17 @@ R= $V.1
 # Targets start here.
 all:	$(PLAT)
 
-$(PLATS) clean:
+$(PLATS):
+	cd src && $(MAKE) $@	
+	mkdir -p bin
+	cd src && mv $(TO_BIN) ../bin
+	cd src && mv $(TO_LIB) ../bin
+	cd src && mv *.o ../bin
+
+clean:
 	cd src && $(MAKE) $@
+	cd - 
+	rm -rf bin 
 
 test:	dummy
 	src/lua -v
