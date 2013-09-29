@@ -60,7 +60,6 @@ $(PLATS):
 
 clean:
 	cd src && $(MAKE) $@
-	cd - 
 	rm -rf bin 
 
 test:	dummy
